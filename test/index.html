@@ -30,7 +30,7 @@
 <body>
 
 	<div id="container"></div>
-	<div id="info"></div>
+	<div id="info"><a href="http://vibertthio.com/portfolio/" target="_blank" rel="noopener">Vibert Thio</a></div>
 
 	<script src="../build/three.js"></script>
 	<script src="./js/controls/TrackballControls.js"></script>
@@ -41,7 +41,8 @@
 	<script>
 		var camera, tick = 0,
 			scene, renderer, clock = new THREE.Clock(),
-			controls, container, gui = new dat.GUI( { width: 350 } ),
+			controls, container,
+			// gui = new dat.GUI( { width: 350 } ),
 			options, spawnerOptions, particleSystem;
 		var stats;
 		init();
@@ -80,18 +81,18 @@
 				timeScale: 0.1,
 			};
 			//
-			gui.add( options, "velocityRandomness", 0, 3 );
-			gui.add( options, "positionRandomness", 0, 3 );
-			gui.add( options, "size", 1, 20 );
-			gui.add( options, "sizeRandomness", 0, 25 );
-			gui.add( options, "colorRandomness", 0, 1 );
-			gui.add( options, "lifetime", .1, 10 );
-			gui.add( options, "turbulence", 0, 1 );
-			gui.add( spawnerOptions, "spawnRate", 10, 30000 );
-			gui.add( spawnerOptions, "timeScale", -1, 1 );
+			// gui.add( options, "velocityRandomness", 0, 3 );
+			// gui.add( options, "positionRandomness", 0, 3 );
+			// gui.add( options, "size", 1, 20 );
+			// gui.add( options, "sizeRandomness", 0, 25 );
+			// gui.add( options, "colorRandomness", 0, 1 );
+			// gui.add( options, "lifetime", .1, 10 );
+			// gui.add( options, "turbulence", 0, 1 );
+			// gui.add( spawnerOptions, "spawnRate", 10, 30000 );
+			// gui.add( spawnerOptions, "timeScale", -1, 1 );
 			//
 			stats = new Stats();
-			container.appendChild( stats.dom );
+			// container.appendChild( stats.dom );
 			//
 			renderer = new THREE.WebGLRenderer();
 			renderer.setPixelRatio( window.devicePixelRatio );
