@@ -70,7 +70,7 @@
 				colorRandomness: .2,
 				turbulence: .5,
 				lifetime: 2,
-				size: 5,
+				size: 7,
 				sizeRandomness: 1
 			};
 			spawnerOptions = {
@@ -103,7 +103,12 @@
 			controls.zoomSpeed = 2.2;
 			controls.panSpeed = 1;
 			controls.dynamicDampingFactor = 0.3;
+
+			controls.minDistance = 100;
+			controls.maxDistance = 200;
+
 			window.addEventListener( 'resize', onWindowResize, false );
+
 		}
 		function onWindowResize() {
 			camera.aspect = window.innerWidth / window.innerHeight;
