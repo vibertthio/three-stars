@@ -74,10 +74,10 @@
 				sizeRandomness: 1
 			};
 			spawnerOptions = {
-				spawnRate: 15000,
-				horizontalSpeed: 1.5,
-				verticalSpeed: 1.33,
-				timeScale: 1
+				spawnRate: 30000,
+				horizontalSpeed: 10,
+				verticalSpeed: 10,
+				timeScale: 0.1,
 			};
 			//
 			gui.add( options, "velocityRandomness", 0, 3 );
@@ -121,6 +121,8 @@
 				options.position.y = Math.sin( tick * spawnerOptions.verticalSpeed ) * 10;
 				options.position.z = Math.sin( tick * spawnerOptions.horizontalSpeed + spawnerOptions.verticalSpeed ) * 5;
 				for ( var x = 0; x < spawnerOptions.spawnRate * delta; x++ ) {
+					options.position = sphereEvenly();
+
 					// Yep, that's really it.	Spawning particles is super cheap, and once you spawn them, the rest of
 					// their lifecycle is handled entirely on the GPU, driven by a time uniform updated below
 					particleSystem.spawnParticle( options );
@@ -132,6 +134,34 @@
 		}
 		function render() {
 			renderer.render( scene, camera );
+		}
+		function sphere() {
+			const r = 40;
+			const theta = Math.random() * Math.PI * 2;
+			const phi = Math.random() * Math.PI;
+			const xpos = r * Math.sin(phi) * Math.cos(theta);
+			const ypos = r * Math.sin(phi) * Math.sin(theta);
+			const zpos = r * Math.cos(phi);
+
+			return ({
+				x: xpos,
+				y: ypos,
+				z: zpos,
+			});
+		}
+		function sphereEvenly() {
+			const r = 40;
+			const theta = Math.random() * Math.PI * 2;
+			const zpos = Math.random() * 2 - 1;
+			const rsin = Math.sqrt(1 - zpos * zpos)
+			const xpos = rsin * Math.cos(theta);
+			const ypos = rsin * Math.sin(theta);
+
+			return ({
+				x: r * xpos,
+				y: r * ypos,
+				z: r * zpos,
+			});
 		}
 	</script>
 </body>

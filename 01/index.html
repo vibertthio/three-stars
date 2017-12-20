@@ -121,8 +121,7 @@
 				options.position.y = Math.sin( tick * spawnerOptions.verticalSpeed ) * 10;
 				options.position.z = Math.sin( tick * spawnerOptions.horizontalSpeed + spawnerOptions.verticalSpeed ) * 5;
 				for ( var x = 0; x < spawnerOptions.spawnRate * delta; x++ ) {
-					// Yep, that's really it.	Spawning particles is super cheap, and once you spawn them, the rest of
-					// their lifecycle is handled entirely on the GPU, driven by a time uniform updated below
+					options.position = sphere();
 					particleSystem.spawnParticle( options );
 				}
 			}
@@ -132,6 +131,20 @@
 		}
 		function render() {
 			renderer.render( scene, camera );
+		}
+		function sphere() {
+			const r = 40;
+			const theta = Math.random() * Math.PI * 2;
+			const phi = Math.random() * Math.PI;
+			const xpos = r * Math.sin(phi) * Math.cos(theta);
+			const ypos = r * Math.sin(phi) * Math.sin(theta);
+			const zpos = r * Math.cos(phi);
+
+			return ({
+				x: xpos,
+				y: ypos,
+				z: zpos,
+			});
 		}
 	</script>
 </body>
